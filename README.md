@@ -5,7 +5,7 @@ YOUSSEF-DOS kernel - based on FreeDOS 2.43
 
 https://the-youssef-nasr-company.github.io/youssef-dos
 
-The YOUSSEF-DOS kernel implements the core MS/PC-DOS (R) compatible functions.  It is derived from Pat Villani's DOS-C kernel and released under the GPL v2.  Please see https://the-youssef-nasr-company.github.io/youssef-dos for more details about the FreeDOS (TM) Project.   This was originally a branch based on 2042 SVN 0xFD kernel; the full svn history has since been added to git (see other branches) and current development of release kernels are available here.  Please fork and submit a Pull Request!
+The YOUSSEF-DOS kernel implements the core MS/PC-DOS (R) compatible functions.  It is derived from Pat Villani's DOS-C kernel and released under the GPL v2.  Please see https://the-youssef-nasr-company.github.io/youssef-dos for more details about the YOUSSEF-DOS (TM) Project.   This was originally a branch based on 2042 SVN 0xFD kernel; the full svn history has since been added to git (see other branches) and current development of release kernels are available here.  Please fork and submit a Pull Request!
 
 Compiled kernels ready to use (just copy kernel.sys over an existing install) are available at the releases.
 
