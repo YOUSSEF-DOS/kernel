@@ -33,7 +33,7 @@
 /* #define DRSYS */           /* SYS for Enhanced DR-DOS (OpenDOS enhancement Project) */
 
 #define SYS_VERSION "v3.6e"
-#define SYS_NAME "FreeDOS System Installer "
+#define SYS_NAME "YOUSSEF-DOS System Installer "
 
 
 #ifdef DRSYS            /* set displayed name & drop FD kernel config */
