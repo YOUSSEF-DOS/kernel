@@ -10,8 +10,9 @@ if "%1" == "B:" set D=B:
 if "%1" == "b" set D=B:
 if "%1" == "B" set D=B:
 
-echo This utility will create a distribution floppy on the disk in drive %D%
-pause
+echo This utility will create a YOUSSEF-DOS distribution floppy on the disk in drive %D%.
+echo Press any key to continue to create a YOUSSEF-DOS distribution floppy on the disk in drive %D%...
+pause <nul
 
 rem try to transfer system files -- abort if it cannot.
 sys %D%
@@ -30,7 +31,7 @@ label %D% freedos
 rem exit methods
 goto done
 :out
-echo Floppy creation aborted
+echo Floppy creation aborted.
 :done
 set D=
 
