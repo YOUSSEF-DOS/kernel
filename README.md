@@ -12,6 +12,6 @@ Compiled kernels ready to use (just copy kernel.sys over an existing install) ar
 
 This version of the kernel is intended only for 8086+ or 80386+ IBM compatible computers in continuation of the goals of the YOUSSEF-DOS (TM) Project.
 
-Please feel free to email me at [youssef.land@outlook.com](mailto:youssef.land@outlook.com).
+Feel free to email me at youssef.land@outlook.com.
 
 Now with automatic builds and soon tests [![Build](../../workflows/Build/badge.svg)](../../actions)
