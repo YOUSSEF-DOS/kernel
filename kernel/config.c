@@ -2739,20 +2739,57 @@ VOID DoInstall(void)
   return;
 }
 
+STATIC BYTE far * searchvar(const BYTE * name, int length)
+{
+  BYTE far * pp = master_env;
+  do {
+    if (!fmemcmp(name, pp, length + 1)) {
+      return pp;
+    }
+    pp += fstrlen(pp) + 1;
+  } while (*pp);
+  return NULL;
+}
+
+STATIC void deletevar(BYTE far * pp) {
+  int variablelength;
+  if (NULL == pp)
+    return;
+  variablelength = fstrlen(pp) + 1;
+  fmemcpy(pp, pp + variablelength, envp + 3 - (pp + variablelength));
+  /* our fmemcpy always copies forwards */
+  envp -= variablelength;
+  return;
+}
+
 STATIC VOID CmdSet(BYTE *pLine)
 {
   pLine = GetStringArg(pLine, szBuf);
   pLine = skipwh(pLine);  /* scan() stops at the equal sign or space */
   if (*pLine == '=')      /* equal sign is required */
   {
-    int size;
+    int size, oldsize, namesize;
+    BYTE far * pp;
     strupr(szBuf);        /* all environment variables must be uppercase */
+    namesize = strlen(szBuf);
     strcat(szBuf, "=");
+    pp = searchvar(szBuf, namesize);
     pLine = skipwh(++pLine);
     strcat(szBuf, pLine); /* append the variable value (may include spaces) */
     size = strlen(szBuf);
-    if (size < master_env + sizeof(master_env) - envp - 1 - 2)
+    if (size == namesize + 1) {
+      /* empty variable ?  then just delete. (cannot fail) */
+      deletevar(pp);
+      return;
+    }
+    if (pp) {
+      oldsize = fstrlen(pp) + 1;
+    } else {
+      oldsize = 0;
+    }
+    if (size < master_env + sizeof(master_env) - (envp - oldsize) - 1 - 2)
     {                     /* must end with two consequtive zeros */
+      deletevar(pp);      /* now that there's enough space, actually delete */
       fstrcpy(envp, szBuf);
       envp += size + 1;   /* add next variables starting at the second zero */
       *envp = 0;
